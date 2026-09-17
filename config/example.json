@@ -1,0 +1,18 @@
+{
+  "cluster": "cluster-a",
+  "qos": "high",
+  "gpu_counts": [1, 2],
+  "poll_seconds": 60,
+  "publish_seconds": 300,
+  "job_timeout_seconds": 86400,
+  "job_prefix": "gpuqprobe",
+  "state_dir": "var/data",
+  "log_dir": "var/logs",
+  "repository": "git@github.com:markli1hoshipu/gpu-queue-probe.git",
+  "metrics_branch": "metrics-cluster-a",
+  "ssh_key_path": "~/.ssh/gpu_queue_probe_ed25519",
+  "encryption_key_file": null,
+  "sbatch_gpu_flag": "--gpus={count}",
+  "gpu_sbatch_args": {},
+  "extra_sbatch_args": []
+}

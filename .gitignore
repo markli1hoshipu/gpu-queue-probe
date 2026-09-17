@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.repo-git/
+config/local.json
+config/*.key
+var/data/*
+var/logs/*
+!var/data/.gitkeep
+!var/logs/.gitkeep

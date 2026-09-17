@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Slurm GPU queue wait history dashboard">
+  <title>GPU Queue Pulse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <nav aria-label="Language">
+      <span class="signal" aria-hidden="true"></span>
+      <div class="languages">
+        <button type="button" data-lang="zh" class="active">中文</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </nav>
+    <header>
+      <p class="eyebrow">SLURM / GPU QUEUE</p>
+      <h1>GPU Queue<br>Pulse</h1>
+      <p class="lede" data-i18n="subtitle">持续记录真实的 GPU 排队等待时间</p>
+    </header>
+    <section class="section-heading">
+      <div>
+        <p class="eyebrow" data-i18n="primaryLabel">核心指标</p>
+        <h2 data-i18n="historyTitle">等待时间历史</h2>
+      </div>
+      <p data-i18n="historyDescription">每个点代表一次真正获得 GPU 的探针作业。</p>
+    </section>
+    <section id="clusters" class="cluster-grid" aria-live="polite"></section>
+    <footer data-i18n="footer">每分钟采样 · 每 5 分钟发布 · 时间均为 UTC</footer>
+  </main>
+
+  <template id="cluster-card">
+    <article class="card">
+      <div class="card-head">
+        <div><p class="card-kicker" data-i18n="cluster">集群</p><h3></h3></div>
+        <span class="status" data-i18n="connecting">连接中</span>
+      </div>
+      <div class="lock-panel hidden">
+        <div class="lock-icon" aria-hidden="true">⌁</div>
+        <h4 data-i18n="protectedTitle">数据已加密</h4>
+        <p data-i18n="protectedText">输入访问密码后在本机浏览器中解密。</p>
+        <form class="unlock-form">
+          <label><span data-i18n="password">访问密码</span><input type="password" autocomplete="current-password" required></label>
+          <button type="submit" data-i18n="unlock">解锁</button>
+        </form>
+        <p class="unlock-error" role="alert"></p>
+      </div>
+      <div class="data-panel hidden">
+        <div class="history-grid"></div>
+        <div class="queue-strip">
+          <div><span data-i18n="pendingJobs">GPU 等待队列</span><strong data-field="pending_jobs">—</strong><small data-i18n="jobs">个作业</small></div>
+          <div><span data-i18n="pendingGpu">排队 GPU 需求</span><strong data-field="pending_gpu_demand">—</strong><small>GPU</small></div>
+          <div><span data-i18n="runningJobs">运行中作业</span><strong data-field="running_jobs">—</strong><small data-i18n="jobs">个作业</small></div>
+        </div>
+        <p class="updated"></p>
+      </div>
+    </article>
+  </template>
+  <script src="app.js"></script>
+</body>
+</html>

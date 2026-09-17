@@ -1,0 +1,13 @@
+[Unit]
+Description=Bounded Slurm GPU queue probe
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/gpu-queue-probe
+ExecStart=%h/gpu-queue-probe/scripts/start.sh
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target
