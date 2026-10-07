@@ -2,6 +2,8 @@
 
 一个有上限、低干扰的 Slurm GPU 排队延迟探针，以及对应的 GitHub Pages 公共仪表盘。
 
+🌐 **在线仪表盘**：<https://markli1hoshipu.github.io/gpu-queue-probe/>
+
 每个集群始终最多保留两个探针作业：一个请求 1 GPU，另一个请求 2 GPU，均使用 `qos=high`。作业获得资源后只记录启动标记并立即退出；控制器观察终态后才提交替代作业，因此不会无限堆积任务。
 
 ## 指标
@@ -53,6 +55,8 @@ cp config/example.json config/local.json
 `systemd/gpu-queue-probe.service` 可安装为用户服务。启用前应先运行一次 `once` 并确认 GPU 参数与队列统计符合目标集群的 Slurm 配置。
 
 ## GitHub Pages
+
+公共仪表盘地址：<https://markli1hoshipu.github.io/gpu-queue-probe/>
 
 主分支中的 Actions 工作流发布 `docs/`。网页从各 metrics 分支读取最新快照。每个发布都是一个无父提交并强制更新其专属分支，因此 metrics 分支不会积累无界 Git 历史；最近 200 个完成样本包含在快照内。
 
